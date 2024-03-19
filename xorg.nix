@@ -10,7 +10,7 @@ let
     chromium --kiosk \
     --window-position=0,0 \
     --disable-translate --disable-sync --noerrdialogs --no-message-box \
-    --no-first-run --start-fullscreen --disable-hang-monitor \
+    --no-first-run --start-fullscreen --disable-hang-monitor --incognito \
     --disable-infobars --disable-logging --disable-sync --disable-features=OverscrollHistoryNavigation --disable-pinch \
     --disable-settings-window \
     --disk-cache-dir=/dev/null \
