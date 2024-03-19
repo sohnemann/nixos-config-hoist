@@ -19,8 +19,6 @@ in
   home-manager.users.kiosk = { pkgs, ... }: {
     home.stateVersion = "24.05";  
     home.options.xsession.initExtra = ''
-      xsession.enable = true;
-      xsession.initExtra = ''
       xset s noblank
       xset s off
       xset -dpms
