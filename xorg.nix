@@ -31,9 +31,8 @@ in {
   users.groups."${kioskUsername}" = {};
 
   # hide cursor on touchscreen
-  services.unclutter.enable = true;
-  services.unclutter.timeout = 0;
-  services.unclutter.threshold = 2000;
+  services.xbanish.enable = true;
+  
 
   # Configure X11
   services.xserver = {
