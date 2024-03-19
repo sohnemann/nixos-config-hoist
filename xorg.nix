@@ -34,9 +34,6 @@ in {
   services.xbanish.enable = true;
   services.xbanish.arguments = "-a";
 
-  boot.plymouth.enable = true;
-
-
   # Configure X11
   services.xserver = {
     enable = true;
