@@ -41,7 +41,8 @@ in {
     displayManager.lightdm = {
       enable = true;
       extraConfig = {
-      xserver-command=X -nocursor;
+        [SeatDefaults]
+        xserver-command=X -nocursor;
       };
       autoLogin = {
         enable = true;
