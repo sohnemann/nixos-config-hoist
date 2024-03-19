@@ -39,7 +39,7 @@ in {
   xset s noblank
   xset s off
   xset -dpms
-  ''
+  '';
 
   # Configure X11
   services.xserver = {
