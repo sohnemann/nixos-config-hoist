@@ -82,7 +82,7 @@ in
      tree
      wget
      dos2unix
-     docker_compose
+     docker-compose
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
