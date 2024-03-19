@@ -3,12 +3,15 @@
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
 { config, lib, pkgs, ... }:
-
+let
+  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
+in
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./xorg.nix
+     (import "${home-manager}/nixos")
     ];
 
   # Use the extlinux boot loader. (NixOS wants to enable GRUB by default)
