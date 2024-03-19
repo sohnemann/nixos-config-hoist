@@ -11,20 +11,20 @@ in
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./xorg.nix
-     (import "${home-manager}/nixos")
+     #(import "${home-manager}/nixos")
     ];
 
 
   # stop screen from going blank or turning off - needs home-manager
-  home-manager.users.kiosk = { config }: {
-    home.stateVersion = "24.05"; 
-    options.xsession.enable = true;
-    options.xsession.initExtra = ''
-      xset s noblank
-      xset s off
-      xset -dpms
-    '';
-  };
+  #home-manager.users.kiosk = { config }: {
+  #  home.stateVersion = "24.05"; 
+  #  options.xsession.enable = true;
+  #  options.xsession.initExtra = ''
+  #    xset s noblank
+  #    xset s off
+  #    xset -dpms
+  #  '';
+  #};
 
   # Use the extlinux boot loader. (NixOS wants to enable GRUB by default)
   boot.loader.grub.enable = false;
