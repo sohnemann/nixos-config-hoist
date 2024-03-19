@@ -32,6 +32,7 @@ in {
 
   # hide cursor on touchscreen
   services.xbanish.enable = true;
+  services.xbanish.arguments = "-a";
   
 
   # Configure X11
