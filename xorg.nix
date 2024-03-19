@@ -7,8 +7,15 @@ let
     #!${pkgs.bash}/bin/bash
     # End all lines with '&' to not halt startup script execution
 
-    # https://developer.mozilla.org/en-US/docs/Mozilla/Command_Line_Options
-    chromium --kiosk https://example.com/ &
+    chromium --kiosk \
+    --window-position=0,0 \
+    --disable-translate --disable-sync --noerrdialogs --no-message-box \
+    --no-first-run --start-fullscreen --disable-hang-monitor \
+    --disable-infobars --disable-logging --disable-sync \
+    --disable-settings-window \
+    --disk-cache-dir=/dev/null \
+    --disk-cache-size=1 \
+    https://example.com/ &  
   '';
 
   inherit (pkgs) writeScript;
