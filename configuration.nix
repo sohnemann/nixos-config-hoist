@@ -16,7 +16,7 @@ in
 
 
   # stop screen from going blank or turning off - needs home-manager
-  home-manager.users.kiosk = { pkgs, ... }: {
+  home-manager.users.kiosk = { }: {
     home.stateVersion = "24.05"; 
     options.xsession.enable = true;
     options.xsession.initExtra = ''
