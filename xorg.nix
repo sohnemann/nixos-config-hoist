@@ -43,7 +43,7 @@ in {
       extraConfig = "
         [SeatDefaults]
         xserver-command=X -nocursor
-      "
+      ";
       autoLogin = {
         enable = true;
         timeout = 0;
