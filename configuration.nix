@@ -81,6 +81,7 @@
      vim
      tree
      wget
+     dos2unix
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
