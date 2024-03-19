@@ -29,7 +29,7 @@ in {
     };
   };
   users.groups."${kioskUsername}" = {};
-  services.unclutter.enable
+  services.unclutter.enable = true;
   # Configure X11
   services.xserver = {
     enable = true;
