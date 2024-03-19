@@ -15,7 +15,7 @@ let
     --disable-settings-window \
     --disk-cache-dir=/dev/null \
     --disk-cache-size=1 \
-    file:///kiosk/index.html &  
+    file:///home/kiosk/index.html &  
   '';
 
   inherit (pkgs) writeScript;
