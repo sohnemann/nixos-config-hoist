@@ -15,12 +15,12 @@
   boot.loader.grub.enable = false;
   # Enables the generation of /boot/extlinux/extlinux.conf
   boot.loader.generic-extlinux-compatible.enable = true;
-  
+
   #boot.loader.systemd-boot.enable = true;
   #boot.loader.efi.canTouchEfiVariables = true;  
   #boot.loader.efi.efiSysMountPoint = "/boot";
 
-  #boot.plymouth.enable = true;
+  boot.plymouth.enable = true;
   #boot.plymouth.theme = "breeze";
     
   networking.hostName = "nixos"; # Define your hostname.
@@ -45,9 +45,6 @@
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
-
-
-  
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
