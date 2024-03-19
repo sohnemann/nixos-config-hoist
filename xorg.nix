@@ -29,7 +29,12 @@ in {
     };
   };
   users.groups."${kioskUsername}" = {};
-  services.unclutter.enable = true;
+
+  # hide cursor on touchscreen
+  services.unclutter-xfixes.enable = true;
+  services.unclutter-xfixes.timeout = 0;
+  services.unclutter-xfixes.threshold = 2000;
+
   # Configure X11
   services.xserver = {
     enable = true;
@@ -40,10 +45,6 @@ in {
     # Let lightdm handle autologin
     displayManager.lightdm = {
       enable = true;
-      extraConfig = "
-        [SeatDefaults]
-        xserver-command=X -nocursor
-      ";
       autoLogin = {
         enable = true;
         timeout = 0;
