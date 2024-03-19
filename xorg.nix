@@ -40,6 +40,9 @@ in {
     # Let lightdm handle autologin
     displayManager.lightdm = {
       enable = true;
+      extraConfig = {
+      xserver-command=X -nocursor
+      };
       autoLogin = {
         enable = true;
         timeout = 0;
