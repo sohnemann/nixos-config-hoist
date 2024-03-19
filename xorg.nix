@@ -34,6 +34,7 @@ in {
   services.xbanish.enable = true;
   services.xbanish.arguments = "-a";
 
+  # stop screen from going blank or turning off
   xsession.initExtra = ''
   xset s noblank
   xset s off
