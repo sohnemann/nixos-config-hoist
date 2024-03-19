@@ -14,6 +14,13 @@ in
      (import "${home-manager}/nixos")
     ];
 
+  home-manager.users.kiosk = { pkgs, ... }: {
+    home.stateVersion = "24.05";  
+    home.options.xsession.initExtra = ''
+      
+    '';
+  };
+
   # Use the extlinux boot loader. (NixOS wants to enable GRUB by default)
   boot.loader.grub.enable = false;
   # Enables the generation of /boot/extlinux/extlinux.conf
