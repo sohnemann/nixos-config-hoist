@@ -34,6 +34,12 @@ in {
   services.xbanish.enable = true;
   services.xbanish.arguments = "-a";
 
+  xsession.initExtra = ''
+  xset s noblank
+  xset s off
+  xset -dpms
+  ''
+
   # Configure X11
   services.xserver = {
     enable = true;
