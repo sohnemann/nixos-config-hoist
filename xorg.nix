@@ -2,13 +2,13 @@
 
 let
   kioskUsername = "kiosk";
-  browser = pkgs.firefox;
+  browser = pkgs.chromium;
   autostart = ''
     #!${pkgs.bash}/bin/bash
     # End all lines with '&' to not halt startup script execution
 
     # https://developer.mozilla.org/en-US/docs/Mozilla/Command_Line_Options
-    firefox --kiosk https://stigok.com/ &
+    chromium --kiosk https://example.com/ &
   '';
 
   inherit (pkgs) writeScript;
@@ -28,6 +28,7 @@ in {
     enable = true;
     layout = "us"; # keyboard layout
     libinput.enable = true;
+    
 
     # Let lightdm handle autologin
     displayManager.lightdm = {
