@@ -34,7 +34,7 @@ in {
   services.xbanish.enable = true;
   services.xbanish.arguments = "-a";
 
-  # stop screen from going blank or turning off - needs homemanager
+  # stop screen from going blank or turning off - needs home-manager
   #xsession.enable = true;
   #xsession.initExtra = ''
   #xset s noblank
