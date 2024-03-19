@@ -67,11 +67,12 @@
   # users.users.alice = {
   #   isNormalUser = true;
   #   extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-  #   packages = with pkgs; [
-  #     firefox
-  #     tree
-  #   ];
-  # };
+     packages = with pkgs; [
+       git
+       vim
+       tree
+     ];
+   };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
