@@ -79,6 +79,17 @@ in
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
+  systemd.services.my-docker-compose = {
+    script = ''
+      docker-compose -f ${/root/nixos-config-hoist/docker-compose.yml}
+    '';
+    wantedBy = ["multi-user.target"];
+    # If you use podman
+    #after = ["podman.service" "podman.socket"];
+    # If you use docker
+     after = ["docker.service" "docker.socket"];
+};
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
