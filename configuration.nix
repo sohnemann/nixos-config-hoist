@@ -15,6 +15,9 @@ in
     ];
 
 
+  # home-manager setup
+  users.users.kiosk.isNormalUser = true;
+
   # stop screen from going blank or turning off - needs home-manager
   #home-manager.users.kiosk = { config }: {
   #  home.stateVersion = "24.05"; 
