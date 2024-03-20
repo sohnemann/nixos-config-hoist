@@ -26,17 +26,21 @@ in
   };
 
   # Use the extlinux boot loader. (NixOS wants to enable GRUB by default)
-  boot.loader.grub.enable = false;
+  #boot.loader.grub.enable = false;
   # Enables the generation of /boot/extlinux/extlinux.conf
-  boot.loader.generic-extlinux-compatible.enable = true;
+  #boot.loader.generic-extlinux-compatible.enable = true;
 
-  # Plymouth enabled but not yet showing - might need to build theme first
+  # Plymouth random theme
+  #boot.plymouth.enable = true;
+  #boot.plymouth.themePackages = [ pkgs.plytheme ]; 
+  #boot.plymouth.theme = "vinyl";
+  #nixpkgs.config.packageOverrides = pkgs: rec { plytheme = pkgs.callPackage ./PlyTheme.nix {}; };
+
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.efi.efiSysMountPoint = "/boot/efi";
   boot.plymouth.enable = true;
-  #boot.plymouth.theme = "breeze";
-  boot.plymouth.themePackages = [ pkgs.plytheme ]; 
-  boot.plymouth.theme = "vinyl";
-  nixpkgs.config.packageOverrides = pkgs: rec { plytheme = pkgs.callPackage ./PlyTheme.nix {}; };
-  #environment.systemPackages = with pkgs; [ plytheme ];
+  boot.plymouth.theme="breeze";
     
   networking.hostName = "nixos"; # Define your hostname.
   # Pick only one of the below networking options.
