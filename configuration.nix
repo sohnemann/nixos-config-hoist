@@ -14,20 +14,16 @@ in
      #(import "${home-manager}/nixos")
     ];
 
-
-  # home-manager setup
-  users.users.kiosk.isNormalUser = true;
-
   # stop screen from going blank or turning off - needs home-manager
-  #home-manager.users.kiosk = { config }: {
-  #  home.stateVersion = "24.05"; 
+  home-manager.users.kiosk = { pkgs, ... }: {
+    home.stateVersion = "24.05"; 
   #  options.xsession.enable = true;
   #  options.xsession.initExtra = ''
   #    xset s noblank
   #    xset s off
   #    xset -dpms
   #  '';
-  #};
+  };
 
   # Use the extlinux boot loader. (NixOS wants to enable GRUB by default)
   boot.loader.grub.enable = false;
