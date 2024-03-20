@@ -63,7 +63,7 @@ in
      wget
      dos2unix
      docker-compose
-     plytheme
+     #plytheme
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
