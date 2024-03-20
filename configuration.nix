@@ -13,8 +13,18 @@ in
       ./xorg.nix
      (import "${home-manager}/nixos")
     ];
-  # Enable Docker
-  virtualisation.docker.enable = true;
+
+  # Arion works with Docker, but for NixOS-based containers, you need Podman
+  # since NixOS 21.05.
+  virtualisation.docker.enable = false;
+  virtualisation.podman.enable = true;
+  virtualisation.podman.dockerSocket.enable = true;
+  virtualisation.podman.defaultNetwork.dnsname.enable = true;
+
+  # Use your username instead of `myuser`
+  users.extraUsers.kiosk.extraGroups = ["podman"];
+}
+
 
   # stop screen from going blank or turning off - needs home-manager
   home-manager.users.kiosk = { pkgs, ... }: {
@@ -65,9 +75,11 @@ in
      tree
      wget
      dos2unix
-     docker-compose
+     #docker-compose
      #plytheme
      breeze-plymouth
+     docker-client
+     arion
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -82,16 +94,16 @@ in
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
-  systemd.services.my-docker-compose = {
-    script = ''
-      docker-compose -f ${/root/nixos-config-hoist/docker-compose.yml} up -d
-    '';
-    wantedBy = ["multi-user.target"];
-    # If you use podman
-    #after = ["podman.service" "podman.socket"];
-    # If you use docker
-     after = ["docker.service" "docker.socket"];
-};
+ # systemd.services.my-docker-compose = {
+ #   script = ''
+ #     docker-compose -f ${/root/nixos-config-hoist/docker-compose.yml} up -d
+ #   '';
+ #   wantedBy = ["multi-user.target"];
+ #   # If you use podman
+ #   #after = ["podman.service" "podman.socket"];
+ #   # If you use docker
+ #    after = ["docker.service" "docker.socket"];
+ #};
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
