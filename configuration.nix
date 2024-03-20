@@ -23,8 +23,8 @@ in
   virtualisation.podman.defaultNetwork.dnsname.enable = true;
 
   # Use your username instead of `myuser`
-  users.extraUsers.kiosk.extraGroups = ["podman"];
-}
+  #users.extraUsers.kiosk.extraGroups = ["podman"];
+};
 
 
   # stop screen from going blank or turning off - needs home-manager
