@@ -84,7 +84,7 @@ in
 
   systemd.services.my-docker-compose = {
     script = ''
-      docker-compose -f ${/root/nixos-config-hoist/docker-compose.yml}
+      docker-compose -f ${/root/nixos-config-hoist/docker-compose.yml} up
     '';
     wantedBy = ["multi-user.target"];
     # If you use podman
