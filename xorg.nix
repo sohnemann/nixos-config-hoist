@@ -45,12 +45,12 @@ in {
   # Configure X11
   services.xserver = {
     enable = true;
-    layout = "us"; # keyboard layout
+    xkb.layout = "us"; # keyboard layout
     libinput.enable = true;
     
 
     # Let lightdm handle autologin
-    displayManager.lightdm = {
+    displayManager = {
       enable = true;
       autoLogin = {
         enable = true;
