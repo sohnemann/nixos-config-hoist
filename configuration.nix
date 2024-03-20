@@ -18,11 +18,11 @@ in
   home-manager.users.kiosk = { pkgs, ... }: {
     home.stateVersion = "24.05"; 
     xsession.enable = true;
-  #  options.xsession.initExtra = ''
-  #    xset s noblank
-  #    xset s off
-  #    xset -dpms
-  #  '';
+    xsession.initExtra = ''
+      xset s noblank
+      xset s off
+      xset -dpms
+    '';
   };
 
   # Use the extlinux boot loader. (NixOS wants to enable GRUB by default)
