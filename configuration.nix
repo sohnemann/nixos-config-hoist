@@ -33,6 +33,10 @@ in
   # Plymouth enabled but not yet showing - might need to build theme first
   boot.plymouth.enable = true;
   #boot.plymouth.theme = "breeze";
+  boot.plymouth.themePackages = [ pkgs.plytheme ]; 
+  boot.plymouth.theme = "vinyl";
+  nixpkgs.config.packageOverrides = pkgs: rec { plytheme = pkgs.callPackage ./PlyTheme.nix {}; };
+  #environment.systemPackages = with pkgs; [ plytheme ];
     
   networking.hostName = "nixos"; # Define your hostname.
   # Pick only one of the below networking options.
@@ -55,6 +59,7 @@ in
      wget
      dos2unix
      docker-compose
+     plytheme
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
