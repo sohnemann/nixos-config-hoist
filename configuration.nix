@@ -13,8 +13,11 @@ in
       ./xorg.nix
      (import "${home-manager}/nixos")
     ];
-  # Enable Docker
-  virtualisation.docker.enable = true;
+  # Enable Podman
+  virtualisation.docker.enable = false;
+  virtualisation.podman.enable = true;
+  virtualisation.podman.dockerSocket.enable = true;
+  virtualisation.podman.defaultNetwork.dnsname.enable = true;;
 
   # stop screen from going blank or turning off - needs home-manager
   home-manager.users.kiosk = { pkgs, ... }: {
