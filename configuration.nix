@@ -13,6 +13,8 @@ in
       ./xorg.nix
      (import "${home-manager}/nixos")
     ];
+  # Enable Docker
+  virtualisation.docker.enable = true;
 
   # stop screen from going blank or turning off - needs home-manager
   home-manager.users.kiosk = { pkgs, ... }: {
@@ -63,7 +65,6 @@ in
      tree
      wget
      dos2unix
-     docker
      docker-compose
      #plytheme
      breeze-plymouth
