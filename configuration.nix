@@ -63,6 +63,7 @@ in
      tree
      wget
      dos2unix
+     docker
      docker-compose
      #plytheme
      breeze-plymouth
