@@ -14,7 +14,7 @@ in
       #./arion-compose.nix
      (import "${home-manager}/nixos")
     ];
-}
+};
 
 
 
