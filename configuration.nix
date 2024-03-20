@@ -64,6 +64,7 @@ in
      dos2unix
      docker-compose
      #plytheme
+     breeze-plymouth
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
