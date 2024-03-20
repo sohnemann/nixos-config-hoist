@@ -11,6 +11,7 @@ in
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./xorg.nix
+      ./arion-compose.nix
      (import "${home-manager}/nixos")
     ];
 
