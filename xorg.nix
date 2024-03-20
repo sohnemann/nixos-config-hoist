@@ -47,10 +47,12 @@ in {
     enable = true;
     xkb.layout = "us"; # keyboard layout
     libinput.enable = true;
+
+
     
 
     # Let lightdm handle autologin
-    displayManager = {
+    displayManager.lightdm = {
       enable = true;
       autoLogin = {
         enable = true;
