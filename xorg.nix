@@ -55,7 +55,6 @@ in {
        };        
        autoLogin = {
         enable = true;
-        timeout = 0;
         user = kioskUsername;
       };
     };
