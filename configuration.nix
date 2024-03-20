@@ -11,7 +11,7 @@ in
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./xorg.nix
-     #(import "${home-manager}/nixos")
+     (import "${home-manager}/nixos")
     ];
 
   # stop screen from going blank or turning off - needs home-manager
