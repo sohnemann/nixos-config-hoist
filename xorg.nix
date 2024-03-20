@@ -48,18 +48,18 @@ in {
     xkb.layout = "us"; # keyboard layout
     libinput.enable = true;
 
-
-    
-
     # Let lightdm handle autologin
-    displayManager.lightdm = {
-      enable = true;
-      autoLogin = {
+    displayManager = {
+       lightdm = {
+        enable = true;
+       };        
+       autoLogin = {
         enable = true;
         timeout = 0;
         user = kioskUsername;
       };
     };
+   
 
     # Start openbox after autologin
     windowManager.openbox.enable = true;
