@@ -63,5 +63,6 @@ in
      dos2unix
      chromium
   ]; 
+  hardware.enableRedistributableFirmware = true;
   system.stateVersion = "24.05"; # DON'T TOUCH THIS!!!
 }
