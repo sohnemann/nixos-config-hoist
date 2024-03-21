@@ -44,10 +44,10 @@ in
   # Do not use GRUB
   boot.loader.grub.enable = false;
   boot.loader.generic-extlinux-compatible.enable = true;
-
-  # Enable Plymouth and hide kernel messages / cursor
   boot.plymouth.enable = true;
   boot.kernelParams = [ "rd.udev.log_priority=3" "vt.global_cursor_default=0" "silent=1" ];
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_rpi4;
+  boot.initrd.availableKernelModules = [ "xhci_pci" "usbhid" "usb_storage" ];
 
   networking.hostName = "nixos"; # Hostname 
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
