@@ -47,7 +47,7 @@ in
 
   # Enable Plymouth and hide kernel messages / cursor
   boot.plymouth.enable = true;
-  boot.kernelParams = [ "rd.udev.log_priority=3" "vt.global_cursor_default=0" ];
+  boot.kernelParams = [ "rd.udev.log_priority=3" "vt.global_cursor_default=0" "silent=1" ];
 
   networking.hostName = "nixos"; # Hostname 
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
