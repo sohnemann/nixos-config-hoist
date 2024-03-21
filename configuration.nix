@@ -45,6 +45,10 @@ in
   boot.loader.grub.enable = false;
   boot.loader.generic-extlinux-compatible.enable = true;
 
+  # Enable Plymouth and hide kernel messages / cursor
+  boot.plymouth.enable = true;
+  boot.kernelParams = [ "rd.udev.log_priority=3" "vt.global_cursor_default=0" ];
+
   networking.hostName = "nixos"; # Hostname 
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
   time.timeZone = "Pacific/Auckland"; # Time Zone
