@@ -29,7 +29,7 @@ in
   services.cage = {
       enable = true;
       user = "kiosk";
-      program = "${pkgs.chromium}/bin/chromium --kiosk \
+      program = ''${pkgs.chromium}/bin/chromium --kiosk \
     --window-position=0,0 \
     --disable-translate --disable-sync --noerrdialogs --no-message-box \
     --no-first-run --start-fullscreen --disable-hang-monitor --incognito \
@@ -38,7 +38,7 @@ in
     --disk-cache-dir=/dev/null \
     --disk-cache-size=1 \
     https://example.com &
-   ";
+   '';
   };
 
   # Do not use GRUB
