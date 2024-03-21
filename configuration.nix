@@ -10,25 +10,31 @@ in
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./xorg.nix
-      ./arion-compose.nix
-     (import "${home-manager}/nixos")
+      #./xorg.nix
+      #./arion-compose.nix
+     #(import "${home-manager}/nixos")
     ];
   # Enable Podman
-  virtualisation.docker.enable = false;
-  virtualisation.podman.enable = true;
-  virtualisation.podman.dockerSocket.enable = true;
-  virtualisation.podman.defaultNetwork.settings.dns_enabled = true;
+  #virtualisation.docker.enable = false;
+  #virtualisation.podman.enable = true;
+  #virtualisation.podman.dockerSocket.enable = true;
+  #virtualisation.podman.defaultNetwork.settings.dns_enabled = true;
 
   # stop screen from going blank or turning off - needs home-manager
-  home-manager.users.kiosk = { pkgs, ... }: {
-    home.stateVersion = "24.05"; 
-    xsession.enable = true;
-    xsession.initExtra = ''
-      xset s noblank
-      xset s off
-      xset -dpms
-    '';
+  #home-manager.users.kiosk = { pkgs, ... }: {
+  #  home.stateVersion = "24.05"; 
+  #  xsession.enable = true;
+  #  xsession.initExtra = ''
+  #    xset s noblank
+  #    xset s off
+  #    xset -dpms
+  #  '';
+  #};
+
+  services.cage = {
+      enable = true;
+      user = "kiosk";
+      program = "${pkgs.firefox}/bin/firefox -kiosk -private-window https://example.com";
   };
 
   # Use the extlinux boot loader. (NixOS wants to enable GRUB by default)
