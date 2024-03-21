@@ -5,6 +5,10 @@
 { config, lib, pkgs, ... }:
 let
   home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
+  kioskUsername = "kiosk";
+  browser = pkgs.chromium;
+  '';
+
 in
 {
   imports =
@@ -14,58 +18,42 @@ in
       #./arion-compose.nix
      #(import "${home-manager}/nixos")
     ];
-  # Enable Podman
-  #virtualisation.docker.enable = false;
-  #virtualisation.podman.enable = true;
-  #virtualisation.podman.dockerSocket.enable = true;
-  #virtualisation.podman.defaultNetwork.settings.dns_enabled = true;
 
-  # stop screen from going blank or turning off - needs home-manager
-  #home-manager.users.kiosk = { pkgs, ... }: {
-  #  home.stateVersion = "24.05"; 
-  #  xsession.enable = true;
-  #  xsession.initExtra = ''
-  #    xset s noblank
-  #    xset s off
-  #    xset -dpms
-  #  '';
-  #};
+  # Set up kiosk user
+  users.users = {
+    "${kioskUsername}" = {
+      group = kioskUsername;
+      isNormalUser = true;
+      packages = [ browser ];
+    };
+  };
+  users.groups."${kioskUsername}" = {};
+
+
+
 
   services.cage = {
       enable = true;
       user = "kiosk";
-      program = "${pkgs.firefox}/bin/firefox -kiosk -private-window https://example.com";
+      program = "${pkgs.chromium}/bin/chromium --kiosk \
+    --window-position=0,0 \
+    --disable-translate --disable-sync --noerrdialogs --no-message-box \
+    --no-first-run --start-fullscreen --disable-hang-monitor --incognito \
+    --disable-infobars --disable-logging --disable-sync --disable-features=OverscrollHistoryNavigation --disable-pinch \
+    --disable-settings-window \
+    --disk-cache-dir=/dev/null \
+    --disk-cache-size=1 \
+    https://example.com &
+   ";
   };
 
-  # Use the extlinux boot loader. (NixOS wants to enable GRUB by default)
+  # Do not use GRUB
   boot.loader.grub.enable = false;
-  # Enables the generation of /boot/extlinux/extlinux.conf
   boot.loader.generic-extlinux-compatible.enable = true;
 
-  # Plymouth random theme
-  #boot.plymouth.enable = true;
-  #boot.plymouth.themePackages = [ pkgs.plytheme ]; 
-  #boot.plymouth.theme = "vinyl";
-  #nixpkgs.config.packageOverrides = pkgs: rec { plytheme = pkgs.callPackage ./PlyTheme.nix {}; };
-
-  # Plymouth not yet working...
-  #boot.loader.systemd-boot.enable = true;
-  #boot.loader.efi.canTouchEfiVariables = true;
-  #boot.loader.efi.efiSysMountPoint = "/boot";
-  #boot.plymouth.enable = true;
-  #boot.plymouth.theme="breeze";
-    
-  networking.hostName = "nixos"; # Define your hostname.
-  # Pick only one of the below networking options.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.hostName = "nixos"; # Hostname 
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
-
-  # Set your time zone.
-  time.timeZone = "Pacific/Auckland";
-
-  # Enable sound.
-  # sound.enable = true;
-  # hardware.pulseaudio.enable = true;
+  time.timeZone = "Pacific/Auckland"; # Time Zone
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -75,63 +63,7 @@ in
      tree
      wget
      dos2unix
-     docker-compose
-     #plytheme
-     breeze-plymouth
-     arion
-     docker-client
-  ];
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  #systemd.services.my-docker-compose = {
-  #  script = ''
-  #    docker-compose -f ${/root/nixos-config-hoist/docker-compose.yml} up -d
-  #  '';
-  #  wantedBy = ["multi-user.target"];
-  #  # If you use podman
-  #  #after = ["podman.service" "podman.socket"];
-  #  # If you use docker
-  #   after = ["docker.service" "docker.socket"]; 
-  #};
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # Copy the NixOS configuration file and link it from the resulting system
-  # (/run/current-system/configuration.nix). This is useful in case you
-  # accidentally delete configuration.nix.
-  # system.copySystemConfiguration = true;
-
-  # This option defines the first version of NixOS you have installed on this particular machine,
-  # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
-  #
-  # Most users should NEVER change this value after the initial install, for any reason,
-  # even if you've upgraded your system to a new NixOS release.
-  #
-  # This value does NOT affect the Nixpkgs version your packages and OS are pulled from,
-  # so changing it will NOT upgrade your system - see https://nixos.org/manual/nixos/stable/#sec-upgrading for how
-  # to actually do that.
-  #
-  # This value being lower than the current NixOS release does NOT mean your system is
-  # out of date, out of support, or vulnerable.
-  #
-  # Do NOT change this value unless you have manually inspected all the changes it would make to your configuration,
-  # and migrated your data accordingly.
-  #
-  # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
-  system.stateVersion = "24.05"; # Did you read the comment?
+     chromium
+  ]; 
+  system.stateVersion = "24.05"; # DON'T TOUCH THIS!!!
 }
