@@ -72,6 +72,23 @@ environment.etc."avahi/services/ssh.service" = {
   #    '';
   #};
 
+  virtualisation.docker.enable = true;
+
+  services.my-docker-compose = {
+    script = ''
+      docker-compose -f /root/nixos-config-hoist/docker-compose.yml
+    '';
+    path = [ pkgs.docker-compose ];
+    wantedBy = ["multi-user.target"];
+    # If you use podman
+    #after = ["podman.service" "podman.socket"];
+    # If you use docker
+    after = ["docker.service" "docker.socket"];
+  };
+
+
+
+
   # Do not use GRUB
   boot.loader.grub.enable = false;
   boot.loader.generic-extlinux-compatible.enable = true;
@@ -93,6 +110,8 @@ environment.etc."avahi/services/ssh.service" = {
      wget
      dos2unix
      chromium
+     docker-compose
+     #docker
   ]; 
   hardware.enableRedistributableFirmware = true;
   system.stateVersion = "24.05"; # DON'T TOUCH THIS!!!
