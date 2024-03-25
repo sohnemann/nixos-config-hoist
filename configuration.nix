@@ -29,6 +29,9 @@ in
   services.cage = {
       enable = true;
       user = "kiosk";
+      extraArguments = [ 
+        "-d" 
+      ];
       environment = {
         XKB_DEFAULT_MODEL = "dell101";
         XKB_DEFAULT_LAYOUT = "us";
@@ -43,7 +46,6 @@ in
         --disk-cache-size=1 \
         https://example.com &
       '';
-      extraArguments = [ "-d" ];
   };
 
   # Do not use GRUB
