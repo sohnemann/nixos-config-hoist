@@ -74,16 +74,15 @@ environment.etc."avahi/services/ssh.service" = {
 
   virtualisation.docker.enable = true;
 
-  services.my-docker-compose = {
+  systemd.services.my-docker-compose = {
     script = ''
-      docker-compose -f /root/nixos-config-hoist/docker-compose.yml
+      docker-compose -f ${/root/nixos-config-hoist/docker-compose.yml} up -d
     '';
-    path = [ pkgs.docker-compose ];
     wantedBy = ["multi-user.target"];
     # If you use podman
-    #after = ["podman.service" "podman.socket"];
+      #after = ["podman.service" "podman.socket"];
     # If you use docker
-    after = ["docker.service" "docker.socket"];
+       after = ["docker.service" "docker.socket"]; 
   };
 
 
