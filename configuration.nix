@@ -34,15 +34,16 @@ in
         XKB_DEFAULT_LAYOUT = "us";
       };
       program = ''${pkgs.chromium}/bin/chromium --kiosk \
-    --window-position=0,0 \
-    --disable-translate --disable-sync --noerrdialogs --no-message-box \
-    --no-first-run --start-fullscreen --disable-hang-monitor --incognito \
-    --disable-infobars --disable-logging --disable-sync --disable-features=OverscrollHistoryNavigation --disable-pinch \
-    --disable-settings-window \
-    --disk-cache-dir=/dev/null \
-    --disk-cache-size=1 \
-    https://example.com &
-   '';
+        --window-position=0,0 \
+        --disable-translate --disable-sync --noerrdialogs --no-message-box \
+        --no-first-run --start-fullscreen --disable-hang-monitor --incognito \
+        --disable-infobars --disable-logging --disable-sync --disable-features=OverscrollHistoryNavigation --disable-pinch \
+        --disable-settings-window \
+        --disk-cache-dir=/dev/null \
+        --disk-cache-size=1 \
+        https://example.com &
+      '';
+      extraArguments = [ "-d" ];
   };
 
   # Do not use GRUB
