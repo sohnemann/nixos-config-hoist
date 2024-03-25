@@ -31,6 +31,7 @@ in
       user = "kiosk";
       environment = {
         XKB_DEFAULT_MODEL = "dell101";
+        XKB_DEFAULT_LAYOUT = "us";
       };
       program = ''${pkgs.chromium}/bin/chromium --kiosk \
     --window-position=0,0 \
