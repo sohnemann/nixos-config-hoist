@@ -75,6 +75,7 @@ environment.etc."avahi/services/ssh.service" = {
   virtualisation.docker.enable = true;
 
   systemd.services.my-docker-compose = {
+    enable = true;
     script = ''
       docker-compose -f ${/root/nixos-config-hoist/docker-compose.yml} up -d
     '';
