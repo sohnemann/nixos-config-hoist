@@ -29,9 +29,6 @@ in
   services.cage = {
       enable = true;
       user = "kiosk";
-      extraArguments = [
-        "-d"
-      ];
       environment = {
         XKB_DEFAULT_MODEL = "dell101";
       };
