@@ -24,7 +24,7 @@ in
   users.groups."${kioskUsername}" = {};
 
 
-
+  # root pw set to "root" for time being
   services.openssh = {
     enable = true;
     settings.PermitRootLogin = "without-password";
