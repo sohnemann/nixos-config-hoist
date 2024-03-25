@@ -25,6 +25,28 @@ in
 
 
 
+  services.openssh = {
+    enable = true;
+    permitRootLogin = "without-password";
+    startWhenNeeded = true;
+  };
+
+environment.etc."avahi/services/ssh.service" = {
+    text = ''
+      <?xml version="1.0" standalone='no'?><!--*-nxml-*-->
+      <!DOCTYPE service-group SYSTEM "avahi-service.dtd">
+      <service-group>
+        <name replace-wildcards="yes">%h</name>
+        <service>
+          <type>_ssh._tcp</type>
+          <port>22</port>
+        </service>
+      </service-group>
+    '';
+  };
+
+
+
   #Enable debug mode
   services.cage = {
       enable = true;
@@ -36,6 +58,7 @@ in
         XKB_DEFAULT_MODEL = "dell101";
         XKB_DEFAULT_LAYOUT = "us";
       };
+
       program = ''${pkgs.chromium}/bin/chromium --kiosk \
         --window-position=0,0 \
         --disable-translate --disable-sync --noerrdialogs --no-message-box \
