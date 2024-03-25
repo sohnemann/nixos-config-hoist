@@ -32,6 +32,9 @@ in
       extraArguments = [
         "-d"
       ];
+      environment = {
+        XKB_DEFAULT_MODEL = "dell101";
+      };
       program = ''${pkgs.chromium}/bin/chromium --kiosk \
     --window-position=0,0 \
     --disable-translate --disable-sync --noerrdialogs --no-message-box \
