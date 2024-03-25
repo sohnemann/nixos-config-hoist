@@ -27,7 +27,7 @@ in
 
   services.openssh = {
     enable = true;
-    permitRootLogin = "without-password";
+    settings.PermitRootLogin = "without-password";
     startWhenNeeded = true;
   };
 
