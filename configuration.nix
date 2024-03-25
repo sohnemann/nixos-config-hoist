@@ -111,7 +111,7 @@ environment.etc."avahi/services/ssh.service" = {
      dos2unix
      chromium
      docker-compose
-     docker
+     docker-client
   ]; 
   hardware.enableRedistributableFirmware = true;
   system.stateVersion = "24.05"; # DON'T TOUCH THIS!!!
