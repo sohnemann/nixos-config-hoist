@@ -25,10 +25,13 @@ in
 
 
 
-
+  #Enable debug mode
   services.cage = {
       enable = true;
       user = "kiosk";
+      extraArguments = [
+        "-d"
+      ];
       program = ''${pkgs.chromium}/bin/chromium --kiosk \
     --window-position=0,0 \
     --disable-translate --disable-sync --noerrdialogs --no-message-box \
