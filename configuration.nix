@@ -27,7 +27,8 @@ in
   # root pw set to "root" for time being
   services.openssh = {
     enable = true;
-    settings.PermitRootLogin = "without-password";
+    settings.PermitRootLogin = "yes";
+    settings.PasswordAuthentication = true;
     startWhenNeeded = true;
   };
 
