@@ -93,6 +93,7 @@ environment.etc."avahi/services/ssh.service" = {
   boot.loader.generic-extlinux-compatible.enable = true;
   boot.plymouth.enable = true;
   boot.kernelParams = [ "udev.log_priority=3" "vt.global_cursor_default=0" "splash" "quiet"];
+  boot.loader.generic-extlinux-compatible.useGenerationDeviceTree = true;
   boot.consoleLogLevel = 0;
   #boot.kernelPackages = pkgs.linuxKernel.packages.linux_rpi4;
   #boot.initrd.availableKernelModules = [ "xhci_pci" "usbhid" "usb_storage" ];
