@@ -7,6 +7,7 @@ in
 {
   imports =
     [ # Include the results of the hardware scan.
+      #"${fetchTarball "https://github.com/NixOS/nixos-hardware/tarball/master"}/raspberry-pi/4"
       ./hardware-configuration.nix
       #./xorg.nix
       #./arion-compose.nix
