@@ -14,6 +14,16 @@ in
      #(import "${home-manager}/nixos")
     ];
 
+
+  fileSystems = {
+    "/" = {
+      device = "/dev/disk/by-label/NIXOS_SD";
+      fsType = "ext4";
+      options = [ "noatime" ];
+    };
+
+  };
+
   # Set up kiosk user
   users.users = {
     "${kioskUsername}" = {
