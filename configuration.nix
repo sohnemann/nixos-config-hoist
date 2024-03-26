@@ -72,22 +72,44 @@ environment.etc."avahi/services/ssh.service" = {
   #    '';
   #};
 
+
+  #Enable debug mode
+  services.cage = {
+      enable = true;
+      user = "kiosk";
+      extraArguments = [ 
+        "-d" 
+      ];
+      environment = {
+        XKB_DEFAULT_MODEL = "dell101";
+        XKB_DEFAULT_LAYOUT = "us";
+      };
+
+      program = ''${pkgs.cog}/bin/cog https://example.com &
+      '';
+  #      --window-position=0,0 \
+  #      --disable-translate --disable-sync --noerrdialogs --no-message-box \
+  #      --no-first-run --start-fullscreen --disable-hang-monitor --incognito \
+  #      --disable-infobars --disable-logging --disable-sync --disable-features=OverscrollHistoryNavigation --disable-pinch \
+  #      --disable-settings-window \
+  #      --disk-cache-dir=/dev/null \
+  #      --disk-cache-size=1 \
+  #      https://example.com &
+  #    '';
+  };
+
   virtualisation.docker.enable = true;
 
-  systemd.services.my-docker-compose = {
+  # Run my docker-compose file
+  systemd.services.hoist-solution = {
     enable = true;
     script = ''
       docker-compose -f ${/root/nixos-config-hoist/docker-compose.yml} up -d
     '';
-    path = [ pkgs.docker-compose ];
+    path = [ pkgs.docker-compose ]; # needed, as all packages that are necessary need to be included in this packaged service
     wantedBy = ["multi-user.target"];
-    # If you use podman
-      #after = ["podman.service" "podman.socket"];
-    # If you use docker
-       after = ["docker.service" "docker.socket"]; 
+    after = ["docker.service" "docker.socket"]; 
   };
-
-
 
 
   # Do not use GRUB
