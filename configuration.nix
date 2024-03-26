@@ -115,5 +115,5 @@ environment.etc."avahi/services/ssh.service" = {
      docker-client
   ]; 
   hardware.enableRedistributableFirmware = true;
-  system.stateVersion = "24.05"; # DON'T TOUCH THIS!!!
+  system.stateVersion = "22.11"; # DON'T TOUCH THIS!!!
 }
