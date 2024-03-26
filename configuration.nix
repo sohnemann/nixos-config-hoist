@@ -68,7 +68,8 @@ environment.etc."avahi/services/ssh.service" = {
         --disable-settings-window \
         --disk-cache-dir=/dev/null \
         --disk-cache-size=1 \
-         http://localhost:8000/ &
+         file:////root/nixos-config-hoist/index.html &
+         #http://localhost:8000/ &
       '';
   };
 
