@@ -87,11 +87,16 @@ environment.etc."avahi/services/ssh.service" = {
   };
 
 
-  # Do not use GRUB
-  boot.loader.grub.enable = false;
+  # Bootloader
+  boot.loader.grub.enable = true;
   boot.loader.generic-extlinux-compatible.enable = true;
-  boot.plymouth.enable = true;
-  boot.kernelParams = [ "rd.udev.log_priority=3" "vt.global_cursor_default=0" "silent=1" "console=tty2" ];
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  # Do not use GRUB
+  #boot.loader.grub.enable = false;
+  #boot.loader.generic-extlinux-compatible.enable = true;
+  #boot.plymouth.enable = true;
+  #boot.kernelParams = [ "rd.udev.log_priority=3" "vt.global_cursor_default=0" "silent=1" "console=tty2" ];
   #boot.kernelPackages = pkgs.linuxKernel.packages.linux_rpi4;
   #boot.initrd.availableKernelModules = [ "xhci_pci" "usbhid" "usb_storage" ];
 
