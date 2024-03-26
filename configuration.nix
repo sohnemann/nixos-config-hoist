@@ -49,31 +49,6 @@ environment.etc."avahi/services/ssh.service" = {
 
 
   #Enable debug mode
-  #services.cage = {
-  #    enable = true;
-  #    user = "kiosk";
-  #    extraArguments = [ 
-  #      "-d" 
-  #    ];
-  #    environment = {
-  #      XKB_DEFAULT_MODEL = "dell101";
-  #      XKB_DEFAULT_LAYOUT = "us";
-  #    };
-
-  #    program = ''${pkgs.chromium}/bin/chromium --kiosk \
-  #      --window-position=0,0 \
-  #      --disable-translate --disable-sync --noerrdialogs --no-message-box \
-  #      --no-first-run --start-fullscreen --disable-hang-monitor --incognito \
-  #      --disable-infobars --disable-logging --disable-sync --disable-features=OverscrollHistoryNavigation --disable-pinch \
-  #      --disable-settings-window \
-  #      --disk-cache-dir=/dev/null \
-  #      --disk-cache-size=1 \
-  #      https://example.com &
-  #    '';
-  #};
-
-
-  #Enable debug mode
   services.cage = {
       enable = true;
       user = "kiosk";
@@ -85,17 +60,16 @@ environment.etc."avahi/services/ssh.service" = {
         XKB_DEFAULT_LAYOUT = "us";
       };
 
-      program = ''${pkgs.cog}/bin/cog https://example.com &
+      program = ''${pkgs.chromium}/bin/chromium --kiosk \
+        --window-position=0,0 \
+        --disable-translate --disable-sync --noerrdialogs --no-message-box \
+        --no-first-run --start-fullscreen --disable-hang-monitor --incognito \
+        --disable-infobars --disable-logging --disable-sync --disable-features=OverscrollHistoryNavigation --disable-pinch \
+        --disable-settings-window \
+        --disk-cache-dir=/dev/null \
+        --disk-cache-size=1 \
+         http://localhost:8000/ &
       '';
-  #      --window-position=0,0 \
-  #      --disable-translate --disable-sync --noerrdialogs --no-message-box \
-  #      --no-first-run --start-fullscreen --disable-hang-monitor --incognito \
-  #      --disable-infobars --disable-logging --disable-sync --disable-features=OverscrollHistoryNavigation --disable-pinch \
-  #      --disable-settings-window \
-  #      --disk-cache-dir=/dev/null \
-  #      --disk-cache-size=1 \
-  #      https://example.com &
-  #    '';
   };
 
   virtualisation.docker.enable = true;
