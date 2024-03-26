@@ -62,7 +62,7 @@ environment.etc."avahi/services/ssh.service" = {
 
       program = ''${pkgs.chromium}/bin/chromium --kiosk \
         --window-position=0,0 \
-        --disable-translate --disable-sync --noerrdialogs --no-message-box \
+        --disable-translate --disable-sync --noerrdialogs --no-message-box --force-dark-mode \
         --no-first-run --start-fullscreen --disable-hang-monitor --incognito \
         --disable-infobars --disable-logging --disable-sync --disable-features=OverscrollHistoryNavigation --disable-pinch \
         --disable-settings-window \
