@@ -6,4 +6,4 @@ services:
         ports:
             - 8000:80
         volumes:
-            - ./src:/usr/share/nginx/html
+            - /root/nixos-config-hoist/src:/usr/share/nginx/html
